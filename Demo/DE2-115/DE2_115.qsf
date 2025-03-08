@@ -1,0 +1,491 @@
+#============================================================
+# Build by Terasic System Builder
+#============================================================
+
+set_global_assignment -name FAMILY "Cyclone IV E"
+set_global_assignment -name DEVICE EP4CE115F29C7
+set_global_assignment -name TOP_LEVEL_ENTITY "DE2_115"
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION "14.0"
+set_global_assignment -name LAST_QUARTUS_VERSION "23.1std.1 Lite Edition"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "00:03:37 FEBRUARY 27,2025"
+set_global_assignment -name DEVICE_FILTER_PACKAGE FBGA
+set_global_assignment -name DEVICE_FILTER_PIN_COUNT 780
+set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 7
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVTTL"
+set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
+
+#============================================================
+# CLOCK
+#============================================================
+set_location_assignment PIN_Y2 -to CLOCK_50
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CLOCK_50
+
+#============================================================
+# SDCARD
+#============================================================
+set_location_assignment PIN_AD14 -to SD_CMD
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SD_CMD
+set_location_assignment PIN_AE12 -to SD_CLK
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SD_CLK
+set_location_assignment PIN_AF14 -to SD_WP_N
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SD_WP_N
+set_location_assignment PIN_AE14 -to SD_DAT0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SD_DAT0
+set_location_assignment PIN_AC14 -to SD_DAT3
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SD_DAT3
+
+
+#============================================================
+# GPIO, GPIO connect to GPIO Default
+#============================================================
+set_location_assignment PIN_AB22 -to JTAG_TDO
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to JTAG_TDO
+set_location_assignment PIN_AB21 -to JTAG_TCK
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to JTAG_TCK
+set_location_assignment PIN_AC21 -to JTAG_TMS
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to JTAG_TMS
+set_location_assignment PIN_AD21 -to JTAG_TDI
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to JTAG_TDI
+
+#============================================================
+# HSMC, HSMC connect to HTG - HSMC to PIO Adaptor
+#============================================================
+set_location_assignment PIN_D27 -to GPIO1_35
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_35
+set_location_assignment PIN_F24 -to GPIO1_31
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_31
+set_location_assignment PIN_D28 -to GPIO1_33
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_33
+set_location_assignment PIN_F25 -to GPIO1_29
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_29
+set_location_assignment PIN_E27 -to GPIO1_34
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_34
+set_location_assignment PIN_D26 -to GPIO1_27
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_27
+set_location_assignment PIN_E28 -to GPIO1_32
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_32
+set_location_assignment PIN_C27 -to GPIO1_25
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_25
+set_location_assignment PIN_F27 -to GPIO1_30
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_30
+set_location_assignment PIN_F26 -to GPIO1_23
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_23
+set_location_assignment PIN_F28 -to GPIO1_28
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_28
+set_location_assignment PIN_E26 -to GPIO1_21
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_21
+set_location_assignment PIN_G27 -to GPIO1_26
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_26
+set_location_assignment PIN_G25 -to GPIO1_19
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_19
+set_location_assignment PIN_G28 -to GPIO1_24
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_24
+set_location_assignment PIN_G26 -to GPIO1_17
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_17
+set_location_assignment PIN_K27 -to GPIO1_22
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_22
+set_location_assignment PIN_H25 -to GPIO1_15
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_15
+set_location_assignment PIN_K28 -to GPIO1_20
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_20
+set_location_assignment PIN_H26 -to GPIO1_13
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_13
+set_location_assignment PIN_M27 -to GPIO1_14
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_14
+set_location_assignment PIN_K25 -to GPIO1_11
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_11
+set_location_assignment PIN_M28 -to GPIO1_12
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_12
+set_location_assignment PIN_K26 -to GPIO1_9
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_9
+set_location_assignment PIN_K21 -to GPIO1_10
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_10
+set_location_assignment PIN_L23 -to GPIO1_7
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_7
+set_location_assignment PIN_K22 -to GPIO1_8
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_8
+set_location_assignment PIN_L24 -to GPIO1_5
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_5
+set_location_assignment PIN_H23 -to GPIO1_6
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_6
+set_location_assignment PIN_M25 -to GPIO1_3
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_3
+set_location_assignment PIN_H24 -to GPIO1_4
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_4
+set_location_assignment PIN_M26 -to GPIO1_1
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_1
+set_location_assignment PIN_G23 -to GPIO1_18
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_18
+set_location_assignment PIN_J27 -to GPIO1_2
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_2
+set_location_assignment PIN_G24 -to GPIO1_16
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_16
+set_location_assignment PIN_J28 -to GPIO1_0
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO1_0
+set_location_assignment PIN_P27 -to GPIO0_35
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_35
+set_location_assignment PIN_T25 -to GPIO0_31
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_31
+set_location_assignment PIN_P28 -to GPIO0_33
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_33
+set_location_assignment PIN_T26 -to GPIO0_29
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_29
+set_location_assignment PIN_J25 -to GPIO0_34
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_34
+set_location_assignment PIN_U25 -to GPIO0_27
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_27
+set_location_assignment PIN_J26 -to GPIO0_32
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_32
+set_location_assignment PIN_U26 -to GPIO0_25
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_25
+set_location_assignment PIN_L27 -to GPIO0_30
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_30
+set_location_assignment PIN_L21 -to GPIO0_23
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_23
+set_location_assignment PIN_L28 -to GPIO0_28
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_28
+set_location_assignment PIN_L22 -to GPIO0_21
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_21
+set_location_assignment PIN_V25 -to GPIO0_26
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_26
+set_location_assignment PIN_N25 -to GPIO0_19
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_19
+set_location_assignment PIN_V26 -to GPIO0_24
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_24
+set_location_assignment PIN_N26 -to GPIO0_17
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_17
+set_location_assignment PIN_R27 -to GPIO0_22
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_22
+set_location_assignment PIN_P25 -to GPIO0_15
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_15
+set_location_assignment PIN_R28 -to GPIO0_20
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_20
+set_location_assignment PIN_P26 -to GPIO0_13
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_13
+set_location_assignment PIN_U27 -to GPIO0_14
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_14
+set_location_assignment PIN_P21 -to GPIO0_11
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_11
+set_location_assignment PIN_U28 -to GPIO0_12
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_12
+set_location_assignment PIN_R21 -to GPIO0_9
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_9
+set_location_assignment PIN_V27 -to GPIO0_10
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_10
+set_location_assignment PIN_R22 -to GPIO0_7
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_7
+set_location_assignment PIN_V28 -to GPIO0_8
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_8
+set_location_assignment PIN_R23 -to GPIO0_5
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_5
+set_location_assignment PIN_U22 -to GPIO0_6
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_6
+set_location_assignment PIN_T21 -to GPIO0_3
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_3
+set_location_assignment PIN_V22 -to GPIO0_4
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_4
+set_location_assignment PIN_T22 -to GPIO0_1
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_1
+set_location_assignment PIN_V23 -to GPIO0_18
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_18
+set_location_assignment PIN_Y27 -to GPIO0_2
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_2
+set_location_assignment PIN_V24 -to GPIO0_16
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_16
+set_location_assignment PIN_Y28 -to GPIO0_0
+set_instance_assignment -name IO_STANDARD "1.8 V" -to GPIO0_0
+
+#============================================================
+# End of pin assignments by Terasic System Builder
+#============================================================
+
+
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/UARTTx.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/UARTRx.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TopHarness.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLXbar_7.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLXbar_5.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLXbar_2.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLXbar_16.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLXbar_15.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLXbar.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLUART.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLSPI.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLSerdesser.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLROM.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLRAM_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLRAM.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLPLIC.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLInterconnectCoupler_9.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLInterconnectCoupler_8.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLInterconnectCoupler_7.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLInterconnectCoupler_24.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLInterconnectCoupler_23.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLInterconnectCoupler_19.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLInterconnectCoupler_17.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLInterconnectCoupler_16.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLInterconnectCoupler_14.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLInterconnectCoupler_10.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLGPIO.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLFragmenter_9.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLFragmenter_8.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLFragmenter_7.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLFragmenter_2.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLFragmenter_13.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLFragmenter_11.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLFragmenter_10.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLFragmenter_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLFragmenter.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLFIFOFixer_4.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLFIFOFixer_3.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLFIFOFixer_2.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLFIFOFixer_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLFIFOFixer.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLError_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLError.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLDebugModuleOuterAsync.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLDebugModuleOuter.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLDebugModuleInnerAsync.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLDebugModuleInner.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLDebugModule.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLBusBypassBar.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLBusBypass.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLBuffer_8.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLBuffer_6.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLBuffer_5.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLBuffer_3.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLBuffer_2.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLBuffer_13.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLBuffer.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLBroadcastTracker_3.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLBroadcastTracker_2.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLBroadcastTracker_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLBroadcastTracker.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLBroadcast.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLB_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLAtomicAutomata_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLAtomicAutomata.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLAsyncCrossingSource.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TLAsyncCrossingSink.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TileResetSetter.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TilePRCIDomain_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TilePRCIDomain.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/TileClockGater.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/tag_array_0.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/SystemBus.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/SynchronizerShiftReg_w8_d3.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/SynchronizerShiftReg_w1_d3.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/SPIPhysical.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/SPIMedia.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/SPIFIFO.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/SimpleHellaCacheIFReplayQueue.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/SimpleHellaCacheIF.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ShiftQueue.sv
+set_global_assignment -name VERILOG_FILE rtl/sha3.v
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ScratchpadSlavePort.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/RVCExpander.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/RRArbiter.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/RoundRawFNToRecFN_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/RoundRawFNToRecFN.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/RoundAnyRawFNToRecFN_4.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/RoundAnyRawFNToRecFN_3.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/RoundAnyRawFNToRecFN_2.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/RoundAnyRawFNToRecFN_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/RoundAnyRawFNToRecFN.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/RocketTile_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/RocketTile.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Rocket_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Rocket.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/RoCCDecoupler_4.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/RoCCDecoupler.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/RoCCController2.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/RoCCController.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/RoccCommandRouter.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/rf_combMem.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ResetWrangler.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ResetSynchronizerShiftReg_w1_d3_i0.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ResetCatchAndSync_d3_VCU118woDDRHarness_UNIQUIFIED.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ResetCatchAndSync_d3.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Repeater_9.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Repeater_8.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Repeater_7.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Repeater_2.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Repeater_11.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Repeater_10.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Repeater_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Repeater.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/regfile_combMem.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/RecFNToRecFN.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/RecFNToIN_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/RecFNToIN.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ram_combMem_9.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ram_combMem_8.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ram_combMem_6.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ram_combMem_5.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ram_combMem_4.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ram_combMem_3.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ram_combMem_2.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ram_combMem_17.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ram_combMem_15.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ram_combMem_14.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ram_combMem_13.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ram_combMem_12.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ram_combMem_11.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ram_combMem_10.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ram_combMem_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ram_combMem_0.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ram_combMem.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Queue_74.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Queue_73.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Queue_7.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Queue_6.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Queue_5.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Queue_4.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Queue_31.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Queue_30.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Queue_23.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Queue_22.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Queue_21.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Queue_17.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Queue_15.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Queue_13.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Queue_12.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Queue_11.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Queue_10.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Queue_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Queue.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/PTW.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ProbePicker.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/PMPChecker_2.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/PMPChecker.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/PLICFanIn.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/PeripheryBus_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/PeripheryBus.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/OptimizationBarrier_22.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/OptimizationBarrier_21.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/OptimizationBarrier.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/NonSyncResetSynchronizerPrimitiveShiftReg_d3.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/MulDiv.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/MulAddRecFNToRaw_preMul_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/MulAddRecFNToRaw_preMul.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/MulAddRecFNToRaw_postMul_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/MulAddRecFNToRaw_postMul.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/MulAddRecFNPipe_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/MulAddRecFNPipe.sv
+set_global_assignment -name VERILOG_FILE rtl/mems.v
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/MemoryBus.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/mem_0.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/mem.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/LevelGateway.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/JtagTapController.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/JtagStateMachine.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/JtagBypassChain.sv
+set_global_assignment -name VERILOG_FILE rtl/IOCell.v
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/IntXbar_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/IntXbar.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/IntToFP.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/IntSyncSyncCrossingSink_29.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/IntSyncSyncCrossingSink_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/IntSyncSyncCrossingSink.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/IntSyncCrossingSource_30.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/IntSyncCrossingSource_17.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/IntSyncCrossingSource_16.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/IntSyncCrossingSource_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/IntSyncAsyncCrossingSink.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/INToRecFN_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/INToRecFN.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ICache.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/IBuf.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/HellaPeekingArbiter.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/HellaCacheArbiter.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/GenericSerializer.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/GenericDeserializer.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Frontend.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/FPUFMAPipe_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/FPUFMAPipe.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/FPUDecoder.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/FPU.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/FPToInt.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/FPToFP.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/FixedClockBroadcast_3.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/FixedClockBroadcast_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/FixedClockBroadcast.sv
+set_global_assignment -name VERILOG_FILE rtl/fifoff_bb.v
+set_global_assignment -name VERILOG_FILE rtl/fifo_bb.v
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ErrorDeviceWrapper.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/DMIToTL.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/DigitalTop.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/DebugTransportModuleJTAG.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/DCacheDataArray.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/DCache.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/data_arrays_1_0.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/data_arrays_0_0.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/data_arrays_0.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/CSRFile_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/CSRFile.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/CompareRecFN.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/CoherenceManagerWrapper.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ClockSinkDomain_6.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ClockSinkDomain_4.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ClockSinkDomain_3.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ClockSinkDomain_2.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ClockSinkDomain_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ClockSinkDomain.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ClockGroupResetSynchronizer.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ClockGroupParameterModifier_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ClockGroupParameterModifier.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ClockGroupCombiner.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ClockGroupAggregator_6.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ClockGroup.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ClockCrossingReg_w8.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ClockCrossingReg_w55.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ClockCrossingReg_w43.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ClockCrossingReg_w21.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/CLINT.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ChipTop.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/CaptureUpdateChain_2.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/CaptureUpdateChain_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/CaptureUpdateChain.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/CaptureChain.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/BundleBridgeNexus_42.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/BreakpointUnit.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/AsyncValidSync.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/AsyncResetSynchronizerShiftReg_w4_d3_i0.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/AsyncResetSynchronizerShiftReg_w1_d3_i0_VCU118woDDRHarness_UNIQUIFIED.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/AsyncResetSynchronizerShiftReg_w1_d3_i0_2.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/AsyncResetSynchronizerShiftReg_w1_d3_i0.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/AsyncResetSynchronizerPrimitiveShiftReg_d3_i0_VCU118woDDRHarness_UNIQUIFIED.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/AsyncResetSynchronizerPrimitiveShiftReg_d3_i0.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/AsyncResetRegVec_w8_i0.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/AsyncResetRegVec_w2_i0.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/AsyncResetRegVec_w1_i1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/AsyncResetRegVec_w1_i0.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/AsyncResetRegVec_w14_i0.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/AsyncResetReg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/AsyncQueueSource_4.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/AsyncQueueSource_3.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/AsyncQueueSource_2.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/AsyncQueueSource.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/AsyncQueueSink_4.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/AsyncQueueSink_3.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/AsyncQueueSink_2.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/AsyncQueueSink.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/AsyncQueue.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Arbiter_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/Arbiter.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/AMOALU.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ALU.sv
+set_global_assignment -name SDC_FILE DE2_115.sdc
+set_global_assignment -name VERILOG_FILE DE2_115.v
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_location_assignment PIN_G9 -to UART_TXD
+set_location_assignment PIN_G12 -to UART_RXD
+set_location_assignment PIN_M23 -to RESETN
+set_instance_assignment -name IO_STANDARD "1.8 V" -to RESETN
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

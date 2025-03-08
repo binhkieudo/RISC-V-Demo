@@ -1,0 +1,57 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "SD_CLK",
+					"strict" : false
+				},
+				{
+					"name" : "SD_CMD",
+					"strict" : false
+				},
+				{
+					"name" : "SD_DAT3",
+					"strict" : false
+				},
+				{
+					"name" : "UART_TXD",
+					"strict" : false
+				},
+				{
+					"name" : "JTAG_TDO",
+					"strict" : false
+				},
+				{
+					"name" : "CLOCK_50",
+					"strict" : false
+				},
+				{
+					"name" : "JTAG_TCK",
+					"strict" : false
+				},
+				{
+					"name" : "JTAG_TMS",
+					"strict" : false
+				},
+				{
+					"name" : "JTAG_TDI",
+					"strict" : false
+				},
+				{
+					"name" : "SD_DAT0",
+					"strict" : false
+				},
+				{
+					"name" : "RESETN",
+					"strict" : false
+				},
+				{
+					"name" : "UART_RXD",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

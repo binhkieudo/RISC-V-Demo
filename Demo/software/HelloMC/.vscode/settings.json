@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "kprintf.h": "c",
+        "clint.h": "c",
+        "stdint.h": "c"
+    }
+}

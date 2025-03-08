@@ -1,0 +1,98 @@
+
+State Machine - |DE2_115|TopHarness:TopHarness|ChipTop:chiptop0|DigitalTop:system|TLRAM_1:ram_1|mem_0:mem|sha3:sha3|sha3_core:core|sha512_ctrl_reg
+Name sha512_ctrl_reg.CTRL_IDLE sha512_ctrl_reg.CTRL_DONE sha512_ctrl_reg.CTRL_ROUNDS 
+sha512_ctrl_reg.CTRL_IDLE 0 0 0 
+sha512_ctrl_reg.CTRL_ROUNDS 1 0 1 
+sha512_ctrl_reg.CTRL_DONE 1 1 0 
+
+State Machine - |DE2_115|TopHarness:TopHarness|ChipTop:chiptop0|DigitalTop:system|TilePRCIDomain_1:tile_prci_domain_3|RocketTile_1:tile_reset_domain_tile|ScratchpadSlavePort:dtim_adapter|state
+Name state.101 state.000 state.011 state.010 state.001 state.100 
+state.100 0 0 0 0 0 0 
+state.001 0 0 0 0 1 1 
+state.010 0 0 0 1 0 1 
+state.011 0 0 1 0 0 1 
+state.000 0 1 0 0 0 1 
+state.101 1 0 0 0 0 1 
+
+State Machine - |DE2_115|TopHarness:TopHarness|ChipTop:chiptop0|DigitalTop:system|TilePRCIDomain_1:tile_prci_domain_3|RocketTile_1:tile_reset_domain_tile|fifo_bb:myrocc_1_myroccBlackBox|stcount
+Name stcount.11 stcount.10 stcount.01 stcount.00 
+stcount.00 0 0 0 0 
+stcount.01 0 0 1 1 
+stcount.10 0 1 0 1 
+stcount.11 1 0 0 1 
+
+State Machine - |DE2_115|TopHarness:TopHarness|ChipTop:chiptop0|DigitalTop:system|TilePRCIDomain_1:tile_prci_domain_3|RocketTile_1:tile_reset_domain_tile|fifoff_bb:myrocc_myroccBlackBox|stcount
+Name stcount.11 stcount.10 stcount.01 stcount.00 
+stcount.00 0 0 0 0 
+stcount.01 0 0 1 1 
+stcount.10 0 1 0 1 
+stcount.11 1 0 0 1 
+
+State Machine - |DE2_115|TopHarness:TopHarness|ChipTop:chiptop0|DigitalTop:system|TilePRCIDomain_1:tile_prci_domain_2|RocketTile_1:tile_reset_domain_tile|ScratchpadSlavePort:dtim_adapter|state
+Name state.101 state.000 state.011 state.010 state.001 state.100 
+state.100 0 0 0 0 0 0 
+state.001 0 0 0 0 1 1 
+state.010 0 0 0 1 0 1 
+state.011 0 0 1 0 0 1 
+state.000 0 1 0 0 0 1 
+state.101 1 0 0 0 0 1 
+
+State Machine - |DE2_115|TopHarness:TopHarness|ChipTop:chiptop0|DigitalTop:system|TilePRCIDomain_1:tile_prci_domain_2|RocketTile_1:tile_reset_domain_tile|fifo_bb:myrocc_1_myroccBlackBox|stcount
+Name stcount.11 stcount.10 stcount.01 stcount.00 
+stcount.00 0 0 0 0 
+stcount.01 0 0 1 1 
+stcount.10 0 1 0 1 
+stcount.11 1 0 0 1 
+
+State Machine - |DE2_115|TopHarness:TopHarness|ChipTop:chiptop0|DigitalTop:system|TilePRCIDomain_1:tile_prci_domain_2|RocketTile_1:tile_reset_domain_tile|fifoff_bb:myrocc_myroccBlackBox|stcount
+Name stcount.11 stcount.10 stcount.01 stcount.00 
+stcount.00 0 0 0 0 
+stcount.01 0 0 1 1 
+stcount.10 0 1 0 1 
+stcount.11 1 0 0 1 
+
+State Machine - |DE2_115|TopHarness:TopHarness|ChipTop:chiptop0|DigitalTop:system|TilePRCIDomain_1:tile_prci_domain_1|RocketTile_1:tile_reset_domain_tile|ScratchpadSlavePort:dtim_adapter|state
+Name state.101 state.000 state.011 state.010 state.001 state.100 
+state.100 0 0 0 0 0 0 
+state.001 0 0 0 0 1 1 
+state.010 0 0 0 1 0 1 
+state.011 0 0 1 0 0 1 
+state.000 0 1 0 0 0 1 
+state.101 1 0 0 0 0 1 
+
+State Machine - |DE2_115|TopHarness:TopHarness|ChipTop:chiptop0|DigitalTop:system|TilePRCIDomain_1:tile_prci_domain_1|RocketTile_1:tile_reset_domain_tile|fifo_bb:myrocc_1_myroccBlackBox|stcount
+Name stcount.11 stcount.10 stcount.01 stcount.00 
+stcount.00 0 0 0 0 
+stcount.01 0 0 1 1 
+stcount.10 0 1 0 1 
+stcount.11 1 0 0 1 
+
+State Machine - |DE2_115|TopHarness:TopHarness|ChipTop:chiptop0|DigitalTop:system|TilePRCIDomain_1:tile_prci_domain_1|RocketTile_1:tile_reset_domain_tile|fifoff_bb:myrocc_myroccBlackBox|stcount
+Name stcount.11 stcount.10 stcount.01 stcount.00 
+stcount.00 0 0 0 0 
+stcount.01 0 0 1 1 
+stcount.10 0 1 0 1 
+stcount.11 1 0 0 1 
+
+State Machine - |DE2_115|TopHarness:TopHarness|ChipTop:chiptop0|DigitalTop:system|TilePRCIDomain:tile_prci_domain|RocketTile:tile_reset_domain_tile|ScratchpadSlavePort:dtim_adapter|state
+Name state.101 state.000 state.011 state.010 state.001 state.100 
+state.100 0 0 0 0 0 0 
+state.001 0 0 0 0 1 1 
+state.010 0 0 0 1 0 1 
+state.011 0 0 1 0 0 1 
+state.000 0 1 0 0 0 1 
+state.101 1 0 0 0 0 1 
+
+State Machine - |DE2_115|TopHarness:TopHarness|ChipTop:chiptop0|DigitalTop:system|TilePRCIDomain:tile_prci_domain|RocketTile:tile_reset_domain_tile|fifo_bb:myrocc_1_myroccBlackBox|stcount
+Name stcount.11 stcount.10 stcount.01 stcount.00 
+stcount.00 0 0 0 0 
+stcount.01 0 0 1 1 
+stcount.10 0 1 0 1 
+stcount.11 1 0 0 1 
+
+State Machine - |DE2_115|TopHarness:TopHarness|ChipTop:chiptop0|DigitalTop:system|TilePRCIDomain:tile_prci_domain|RocketTile:tile_reset_domain_tile|fifoff_bb:myrocc_myroccBlackBox|stcount
+Name stcount.11 stcount.10 stcount.01 stcount.00 
+stcount.00 0 0 0 0 
+stcount.01 0 0 1 1 
+stcount.10 0 1 0 1 
+stcount.11 1 0 0 1 
