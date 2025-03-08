@@ -76,34 +76,11 @@ Then format the SD Card with the following options:
 After formatting the SD Card, print the new partition and save the configurations.
 <img src="https://github.com/binhkieudo/riscv_framework/assets/22954544/a657a6da-617b-409a-8b2f-4f7ec7f96128" alt="drawing" width="700"/>
 
-## Build your first tiny FPGA prototype (currently support Arty100T, VC707, VCU118)
+## Prepare your first DEMO with FPGA (currently support D2-115)
 
-Vivado must be in your PATH
+Quartus must be in your PATH
 
-To reduce the BootROM size
-
-In file /riscv_framework/generators/rocket-chip/src/main/scala/devices/tilelinkBootROM.scala
-
-Replace line 79
+Enter Demo FPGA folder
 ```shell
-rom.array() ++ subsystem.dtb.contents
-```
-by
-```shell
-rom.array() //++ subsystem.dtb.contents
-```
-
-Enter framework folder
-```shell
-cd framework
-```
-
-Build the bitstream with your selected configuration.
-```shell
-make SUB_PROJECT=vc707_rocketsmall bitstream
-```
-
-After generating ".bit" file, connect the VC707 board to your PC (make sure that the rules for Digilent cable are defined beforehand). Then program the board.
-```shell
-make download_bitstream
+cd ./Demo/FPGA
 ```
