@@ -1,4 +1,4 @@
-# RISC-V Demo
+# Tutorial
 ## Instructions
 
 Clone using:
@@ -21,7 +21,8 @@ sudo chmod a+x ./Anaconda3-2023.09-0-Linux-x86_64.sh
 Then install conda-lock for "base" environment
 
 ```shell
-conda install -n base conda-lock=1.4
+onda create -n "myenv" python=3.9.0
+conda install -n myenv conda-lock=1.4
 ```
 
 ## Build chipyard enviroment
@@ -29,7 +30,7 @@ conda install -n base conda-lock=1.4
 Active coda first
 
 ```shell
-conda activate
+conda activate myenv
 ```
 Then build the related tools
 
