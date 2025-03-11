@@ -14,75 +14,35 @@ sim_name := none
 #########################################################################################
 # include shared variables
 #########################################################################################
-SUB_PROJECT ?= arty
+SUB_PROJECT ?= quadcore
 
-ifeq ($(SUB_PROJECT),vc707)
-	SBT_PROJECT       ?= fpga_platforms
-	MODEL             ?= VC707FPGATestHarness
-	VLOG_MODEL        ?= VC707FPGATestHarness
-	MODEL_PACKAGE     ?= chipyard.fpga.vc707
-	CONFIG            ?= RocketVC707Config
-	CONFIG_PACKAGE    ?= chipyard.fpga.vc707
-	GENERATOR_PACKAGE ?= chipyard
-	TB                ?= none # unused
-	TOP               ?= ChipTop
-	BOARD             ?= vc707
-	FPGA_BRAND        ?= xilinx
-endif
-
-ifeq ($(SUB_PROJECT),vcu118)
-	SBT_PROJECT       ?= fpga_platforms
-	MODEL             ?= VCU118FPGATestHarness
-	VLOG_MODEL        ?= VCU118FPGATestHarness
-	MODEL_PACKAGE     ?= chipyard.fpga.vcu118
-	CONFIG            ?= RocketVCU118Config
-	CONFIG_PACKAGE    ?= chipyard.fpga.vcu118
-	GENERATOR_PACKAGE ?= chipyard
-	TB                ?= none # unused
-	TOP               ?= ChipTop
-	BOARD             ?= vcu118
-	FPGA_BRAND        ?= xilinx
-endif
-
-ifeq ($(SUB_PROJECT),bringup)
-	SBT_PROJECT       ?= fpga_platforms
-	MODEL             ?= BringupVCU118FPGATestHarness
-	VLOG_MODEL        ?= BringupVCU118FPGATestHarness
-	MODEL_PACKAGE     ?= chipyard.fpga.vcu118.bringup
-	CONFIG            ?= RocketBringupConfig
-	CONFIG_PACKAGE    ?= chipyard.fpga.vcu118.bringup
-	GENERATOR_PACKAGE ?= chipyard
-	TB                ?= none # unused
-	TOP               ?= ChipTop
-	BOARD             ?= vcu118
-	FPGA_BRAND        ?= xilinx
-endif
-ifeq ($(SUB_PROJECT),arty)
+ifeq ($(SUB_PROJECT),myarty)
 	# TODO: Fix with Arty
 	SBT_PROJECT       ?= fpga_platforms
-	MODEL             ?= ArtyFPGATestHarness
-	VLOG_MODEL        ?= ArtyFPGATestHarness
-	MODEL_PACKAGE     ?= chipyard.fpga.arty
-	CONFIG            ?= TinyRocketArtyConfig
-	CONFIG_PACKAGE    ?= chipyard.fpga.arty
+	MODEL             ?= Arty35TwoDDRHarness
+	VLOG_MODEL        ?= Arty35TwoDDRHarness
+	MODEL_PACKAGE     ?= chipyard.fpga.arty35t
+	CONFIG            ?= MyRocketArty32TConfig
+	CONFIG_PACKAGE    ?= chipyard.fpga.arty35t
 	GENERATOR_PACKAGE ?= chipyard
 	TB                ?= none # unused
 	TOP               ?= ChipTop
 	BOARD             ?= arty
 	FPGA_BRAND        ?= xilinx
 endif
-ifeq ($(SUB_PROJECT),arty100t)
+
+ifeq ($(SUB_PROJECT),quadcore)
 	# TODO: Fix with Arty
 	SBT_PROJECT       ?= fpga_platforms
-	MODEL             ?= Arty100THarness
-	VLOG_MODEL        ?= Arty100THarness
-	MODEL_PACKAGE     ?= chipyard.fpga.arty100t
-	CONFIG            ?= RocketArty100TConfig
-	CONFIG_PACKAGE    ?= chipyard.fpga.arty100t
+	MODEL             ?= Arty35TwoDDRHarness
+	VLOG_MODEL        ?= Arty35TwoDDRHarness
+	MODEL_PACKAGE     ?= chipyard.fpga.arty35t
+	CONFIG            ?= FourRocketArty35TConfig
+	CONFIG_PACKAGE    ?= chipyard.fpga.arty35t
 	GENERATOR_PACKAGE ?= chipyard
 	TB                ?= none # unused
 	TOP               ?= ChipTop
-	BOARD             ?= arty_a7_100
+	BOARD             ?= arty
 	FPGA_BRAND        ?= xilinx
 endif
 

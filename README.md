@@ -21,7 +21,7 @@ sudo chmod a+x ./Anaconda3-2023.09-0-Linux-x86_64.sh
 Then install conda-lock for "base" environment
 
 ```shell
-onda create -n "myenv" python=3.9.0
+conda create -n "myenv" python=3.9.0
 conda install -n myenv conda-lock=1.4
 ```
 

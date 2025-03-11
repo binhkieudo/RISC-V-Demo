@@ -2,10 +2,66 @@ package chipyard
 
 import org.chipsalliance.cde.config.{Config}
 import freechips.rocketchip.diplomacy.{AsynchronousCrossing}
+import freechips.rocketchip.subsystem.RocketCrossingParams
+import freechips.rocketchip.subsystem.TilesLocated
+import freechips.rocketchip.subsystem.InSubsystem
+import freechips.rocketchip.tile.RocketTileParams
+import freechips.rocketchip.rocket.RocketCoreParams
+import freechips.rocketchip.tile.FPUParams
+import freechips.rocketchip.rocket.DCacheParams
+import freechips.rocketchip.subsystem.SystemBusKey
+import freechips.rocketchip.subsystem.CacheBlockBytes
+import freechips.rocketchip.rocket.ICacheParams
+import freechips.rocketchip.subsystem.RocketTileAttachParams
 
 // --------------
 // Rocket Configs
 // --------------
+class WithBareCores(
+  n: Int,
+  overrideIdOffset: Option[Int] = None,
+  crossing: RocketCrossingParams = RocketCrossingParams()
+) extends Config((site, here, up) => {
+  case TilesLocated(InSubsystem) => {
+    val prev = up(TilesLocated(InSubsystem), site)
+    val idOffset = overrideIdOffset.getOrElse(prev.size)
+    val small = RocketTileParams(
+      core = RocketCoreParams(
+        useVM = false, 
+        fpu = Some(FPUParams(
+          divSqrt = false
+        ))
+      ),
+      btb = None,
+      dcache = Some(DCacheParams(
+        rowBits = site(SystemBusKey).beatBits,
+        nSets = 64,
+        nWays = 1,
+        nTLBSets = 1,
+        nTLBWays = 4,
+        nMSHRs = 0,
+        blockBytes = site(CacheBlockBytes))),
+      icache = Some(ICacheParams(
+        rowBits = site(SystemBusKey).beatBits,
+        nSets = 64,
+        nWays = 1,
+        nTLBSets = 1,
+        nTLBWays = 4,
+        blockBytes = site(CacheBlockBytes))))
+    List.tabulate(n)(i => RocketTileAttachParams(
+      small.copy(hartId = i + idOffset),
+      crossing
+    )) ++ prev
+  }
+})
+
+class WithDCacheScratchpad extends Config((site, here, up) => {
+  case TilesLocated(InSubsystem) => up(TilesLocated(InSubsystem), site) map {
+    case tp: RocketTileAttachParams => tp.copy(tileParams = tp.tileParams.copy(
+      dcache = tp.tileParams.dcache.map(_.copy(nSets = 512, nWays = 1, scratch = Some(0x40000000 + tp.tileParams.hartId * 0x8000)))
+    )) // 16-KB/each
+  }
+})
 
 class RocketConfig extends Config(
   new freechips.rocketchip.subsystem.WithNBigCores(1) ++         // single rocket-core
@@ -17,6 +73,16 @@ class TinyRocketConfig extends Config(
   new freechips.rocketchip.subsystem.WithNBanks(0) ++             // remove L2$
   new freechips.rocketchip.subsystem.WithNoMemPort ++             // remove backing memory
   new freechips.rocketchip.subsystem.With1TinyCore ++             // single tiny rocket-core
+  new chipyard.config.AbstractConfig)
+
+class FourRocketConfig extends Config(
+  new WithDCacheScratchpad ++
+  new testchipip.WithSbusScratchpad(base = BigInt(0x80000000L), size = BigInt(128 << 10)) ++
+  new testchipip.WithSbusScratchpad(base = BigInt(0x90000000L), size = BigInt(16 << 10)) ++
+  new freechips.rocketchip.subsystem.WithIncoherentBusTopology ++
+  new freechips.rocketchip.subsystem.WithNBanks(0) ++
+  new freechips.rocketchip.subsystem.WithNoMemPort ++
+  new WithBareCores(4) ++         // Quad rocket-core
   new chipyard.config.AbstractConfig)
 
 class UARTTSIRocketConfig extends Config(
@@ -32,9 +98,7 @@ class SimAXIRocketConfig extends Config(
   new freechips.rocketchip.subsystem.WithNBigCores(1) ++
   new chipyard.config.AbstractConfig)
 
-class QuadRocketConfig extends Config(
-  new freechips.rocketchip.subsystem.WithNBigCores(4) ++    // quad-core (4 RocketTiles)
-  new chipyard.config.AbstractConfig)
+
 
 class Cloned64RocketConfig extends Config(
   new freechips.rocketchip.subsystem.WithCloneRocketTiles(63, 0) ++ // copy tile0 63 more times
