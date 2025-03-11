@@ -75,7 +75,11 @@ Then format the SD Card with the following options:
 After formatting the SD Card, print the new partition and save the configurations.
 <img src="https://github.com/binhkieudo/riscv_framework/assets/22954544/a657a6da-617b-409a-8b2f-4f7ec7f96128" alt="drawing" width="700"/>
 
-## Prepare your first DEMO with FPGA (currently support D2-115)
+## Tutorial
+
+Please read Tutorial/Tutorial.pdf
+
+## DEMO (currently support D2-115)
 
 Quartus must be in your PATH
 
