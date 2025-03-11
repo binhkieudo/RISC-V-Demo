@@ -6,34 +6,52 @@
 module DE2_115(
 
 	//////////// CLOCK //////////
-	input 		          		CLOCK_50,
-	input								RESETN,
-	//////////// SDCARD //////////
-	output		          		SD_CLK,
-	output 		          		SD_CMD,
-	input 		     				SD_DAT0,
-	output 		     				SD_DAT3,
-
-	//////////// UART ///////////
-	output							UART_TXD,
-	input								UART_RXD,
+	input 		 CLOCK_50,
+	input			 RESETN,
 	
-	//////////// GPIO, GPIO connect to GPIO Default //////////
-	output							JTAG_TDO,
-	input								JTAG_TCK,
-	input								JTAG_TMS,
-	input								JTAG_TDI
+	//////////// SDCARD //////////
+	output		 SD_CLK,
+	output 		 SD_CMD,
+	input 		 SD_DAT0,
+	output 		 SD_DAT3,
+	
+	//////////// UART ///////////
+	output		 UART_TXD,
+	input			 UART_RXD,
+	
+	//////////// JTAG //////////
+	output		 JTAG_TDO,
+	input			 JTAG_TCK,
+	input			 JTAG_TMS,
+	input			 JTAG_TDI,
 
-	//////////// HSMC, HSMC connect to HTG - HSMC to PIO Adaptor //////////
+	//////////// SW, LED ///////
+	input  [7:0] SW,
+	output [7:0] LED
+	
 );
 
-
-
+	wire sysclk;
+	
+   wire       serin_ready;
+   wire       serin_valid;
+	wire [7:0] serin_data;
+	
+   wire       serout_valid;
+   wire       serout_ready;
+   wire [7:0] serout_data;
+   
+	pll4M pll0(
+		.areset  (!RESETN  ),
+		.inclk0  (CLOCK_50 ),
+		.c0		(sysclk 	 )
+	);
+	
 //=======================================================
 //  REG/WIRE declarations
 //=======================================================
 	TopHarness TopHarness(
-	  .sys_clock	 (CLOCK_50	),
+	  .sys_clock	 (sysclk		),
 	  .reset			 (!RESETN	),
 	  // JTAG (4)
 	  .jtag_TCK		 (JTAG_TCK 	),
@@ -45,38 +63,63 @@ module DE2_115(
 	  .sdio_cs		 (SD_CMD 	),
 	  .sdio_dat_0	 (SD_DAT0	),
 	  .sdio_dat_3	 (SD_DAT3	),
-	  .flash_dat_1  (1'b1		),
 	  // UART (2)
 	  .uart_txd		 (UART_TXD	),
 	  .uart_rxd		 (UART_RXD	),
-	  // SerDes (20)
-	  .serin_valid	 (1'b0		),
-	  .serin_data0  (1'b0		),
-	  .serin_data1  (1'b0		),
-	  .serin_data2  (1'b0		),
-	  .serin_data3  (1'b0		),
-	  .serin_data4  (1'b0		),
-	  .serin_data5  (1'b0		),
-	  .serin_data6  (1'b0		),
-	  .serin_data7  (1'b0		),
-	  .serout_ready (1'b1		),
-	  // GPIO (16)   
-	  .gpio_gpio_i0 (1'b0		),
-	  .gpio_gpio_i1 (1'b0		),
-	  .gpio_gpio_i2 (1'b0		),
-	  .gpio_gpio_i3 (1'b0		),
-	  .gpio_gpio_i4 (1'b0		),
-	  .gpio_gpio_i5 (1'b0		),
-	  .gpio_gpio_i6 (1'b0		),
-	  .gpio_gpio_i7 (1'b0		)
+	  // Serin
+	  .serin_ready	 (serin_ready 	 ),
+	  .serin_valid	 (serin_valid	 ),
+	  .serin_data0  (serin_data[0] ),
+	  .serin_data1  (serin_data[1] ),
+	  .serin_data2  (serin_data[2] ),
+	  .serin_data3  (serin_data[3] ),
+	  .serin_data4  (serin_data[4] ),
+	  .serin_data5  (serin_data[5] ),
+	  .serin_data6  (serin_data[6] ),
+	  .serin_data7  (serin_data[7] ),
+	  // Serout
+	  .serout_ready (serout_ready	  ),
+	  .serout_valid (serout_valid   ),
+	  .serout_data0 (serout_data[0] ),
+	  .serout_data1 (serout_data[1] ),
+	  .serout_data2 (serout_data[2] ),
+	  .serout_data3 (serout_data[3] ),
+	  .serout_data4 (serout_data[4] ),
+	  .serout_data5 (serout_data[5] ),
+	  .serout_data6 (serout_data[6] ),
+	  .serout_data7 (serout_data[7] ),
+	  // GPIO  
+	  .gpio_gpio_i0 (SW[0]		),
+	  .gpio_gpio_i1 (SW[1]		),
+	  .gpio_gpio_i2 (SW[2]		),
+	  .gpio_gpio_i3 (SW[3]		),
+	  .gpio_gpio_i4 (SW[4]		),
+	  .gpio_gpio_i5 (SW[5]		),
+	  .gpio_gpio_i6 (SW[6]		),
+	  .gpio_gpio_i7 (SW[7]		),
+	  .gpio_gpio_o0 (LED[0]		),
+	  .gpio_gpio_o1 (LED[1]		),
+	  .gpio_gpio_o2 (LED[2]		),
+	  .gpio_gpio_o3 (LED[3]		),
+	  .gpio_gpio_o4 (LED[4]		),
+	  .gpio_gpio_o5 (LED[5]		),
+	  .gpio_gpio_o6 (LED[6]		),
+	  .gpio_gpio_o7 (LED[7]		),	  
 	);
 
-
-
 //=======================================================
-//  Structural coding
+//  Serial RAM
 //=======================================================
-
+	SerialRAM ext_ram(
+	  .clock					(sysclk 		  ), // input clock
+	  .reset					(!RESETN 	  ), // input reset
+	  .io_ser_in_ready	(serin_ready  ), // input Processor ready
+	  .io_ser_out_valid	(serout_valid ), // input data from processor valid
+	  .io_ser_out_bits	(serout_data  ), // input 8-bit data from processor
+	  .io_ser_in_valid	(serin_valid  ), // output data to processor valid
+	  .io_ser_in_bits		(serin_data   ), // output 8-bit data to processor
+	  .io_ser_out_ready	(serout_ready )  // output SerialRam ready
+	);
 
 
 endmodule

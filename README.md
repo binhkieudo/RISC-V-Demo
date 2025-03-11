@@ -83,7 +83,12 @@ Please read Tutorial/Tutorial.pdf
 
 Quartus must be in your PATH
 
-Enter Demo FPGA folder
+Demo with FPGA
 ```shell
-cd ./Demo/FPGA
+./Demo/DE2-115
+```
+
+Demo with Chip
+```shell
+./Demo/Chip
 ```

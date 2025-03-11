@@ -11,7 +11,7 @@ module TopHarness(
   output    sdio_cs,
   input     sdio_dat_0,
   output    sdio_dat_3,
-  // Flash (4)
+  // Flash (Reserve)
   output    flash_clk,
   output    flash_cs,
   output    flash_dat_0,

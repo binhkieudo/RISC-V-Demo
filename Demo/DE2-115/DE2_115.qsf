@@ -23,28 +23,28 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CLOCK_50
 #============================================================
 # SDCARD
 #============================================================
-set_location_assignment PIN_AD14 -to SD_CMD
+set_location_assignment PIN_Y17 -to SD_CMD
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SD_CMD
-set_location_assignment PIN_AE12 -to SD_CLK
+set_location_assignment PIN_AE16 -to SD_CLK
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SD_CLK
 set_location_assignment PIN_AF14 -to SD_WP_N
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SD_WP_N
-set_location_assignment PIN_AE14 -to SD_DAT0
+set_location_assignment PIN_Y16 -to SD_DAT0
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SD_DAT0
-set_location_assignment PIN_AC14 -to SD_DAT3
+set_location_assignment PIN_AC15 -to SD_DAT3
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SD_DAT3
 
 
 #============================================================
 # GPIO, GPIO connect to GPIO Default
 #============================================================
-set_location_assignment PIN_AB22 -to JTAG_TDO
+set_location_assignment PIN_AD21 -to JTAG_TDO
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to JTAG_TDO
-set_location_assignment PIN_AB21 -to JTAG_TCK
+set_location_assignment PIN_AC21 -to JTAG_TCK
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to JTAG_TCK
-set_location_assignment PIN_AC21 -to JTAG_TMS
+set_location_assignment PIN_AB21 -to JTAG_TMS
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to JTAG_TMS
-set_location_assignment PIN_AD21 -to JTAG_TDI
+set_location_assignment PIN_AB22 -to JTAG_TDI
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to JTAG_TDI
 
 #============================================================
@@ -204,6 +204,66 @@ set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_location_assignment PIN_G9 -to UART_TXD
+set_location_assignment PIN_G12 -to UART_RXD
+set_location_assignment PIN_M23 -to RESETN
+set_instance_assignment -name IO_STANDARD "1.8 V" -to RESETN
+set_location_assignment PIN_AB28 -to SW[0]
+set_location_assignment PIN_AC28 -to SW[1]
+set_location_assignment PIN_AC27 -to SW[2]
+set_location_assignment PIN_AD27 -to SW[3]
+set_location_assignment PIN_AB27 -to SW[4]
+set_location_assignment PIN_AC26 -to SW[5]
+set_location_assignment PIN_AD26 -to SW[6]
+set_location_assignment PIN_AB26 -to SW[7]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to SW[7]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to SW[6]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to SW[5]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to SW[4]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to SW[3]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to SW[2]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to SW[1]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to SW[0]
+set_location_assignment PIN_G19 -to LED[0]
+set_location_assignment PIN_F19 -to LED[1]
+set_location_assignment PIN_E19 -to LED[2]
+set_location_assignment PIN_F21 -to LED[3]
+set_location_assignment PIN_F18 -to LED[4]
+set_location_assignment PIN_E18 -to LED[5]
+set_location_assignment PIN_J19 -to LED[6]
+set_location_assignment PIN_H19 -to LED[7]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to LED[0]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to LED[7]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to LED[6]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to LED[5]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to LED[4]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to LED[3]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to LED[2]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to LED[1]
+set_global_assignment -name SYSTEMVERILOG_FILE SerDes/TSIToTileLink.sv
+set_global_assignment -name SYSTEMVERILOG_FILE SerDes/TLSerdesser_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE SerDes/serTLRAM.sv
+set_global_assignment -name SYSTEMVERILOG_FILE SerDes/serTLFragmenter_9.sv
+set_global_assignment -name SYSTEMVERILOG_FILE SerDes/serTLBuffer_16.sv
+set_global_assignment -name SYSTEMVERILOG_FILE SerDes/serTLBuffer_13_DebugHarness_UNIQUIFIED.sv
+set_global_assignment -name SYSTEMVERILOG_FILE SerDes/serRepeater_8.sv
+set_global_assignment -name SYSTEMVERILOG_FILE SerDes/serram_combMem_14.sv
+set_global_assignment -name SYSTEMVERILOG_FILE SerDes/serram_combMem_10_DebugHarness_UNIQUIFIED.sv
+set_global_assignment -name SYSTEMVERILOG_FILE SerDes/serram_combMem_5.sv
+set_global_assignment -name SYSTEMVERILOG_FILE SerDes/serram_combMem_1_DebugHarness_UNIQUIFIED.sv
+set_global_assignment -name SYSTEMVERILOG_FILE SerDes/serQueue_29.sv
+set_global_assignment -name SYSTEMVERILOG_FILE SerDes/serQueue_28.sv
+set_global_assignment -name SYSTEMVERILOG_FILE SerDes/serQueue_22_DebugHarness_UNIQUIFIED.sv
+set_global_assignment -name SYSTEMVERILOG_FILE SerDes/serQueue_21_DebugHarness_UNIQUIFIED.sv
+set_global_assignment -name VERILOG_FILE SerDes/sermems.v
+set_global_assignment -name SYSTEMVERILOG_FILE SerDes/sermem.sv
+set_global_assignment -name SYSTEMVERILOG_FILE SerDes/SerialRAM.sv
+set_global_assignment -name SYSTEMVERILOG_FILE SerDes/HellaPeekingArbiter_DebugHarness_UNIQUIFIED.sv
+set_global_assignment -name SYSTEMVERILOG_FILE SerDes/GenericSerializer_DebugHarness_UNIQUIFIED.sv
+set_global_assignment -name SYSTEMVERILOG_FILE SerDes/GenericDeserializer_DebugHarness_UNIQUIFIED.sv
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/UARTTx.sv
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/UARTRx.sv
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/TopHarness.sv
@@ -481,11 +541,6 @@ set_global_assignment -name SYSTEMVERILOG_FILE rtl/AMOALU.sv
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/ALU.sv
 set_global_assignment -name SDC_FILE DE2_115.sdc
 set_global_assignment -name VERILOG_FILE DE2_115.v
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_location_assignment PIN_G9 -to UART_TXD
-set_location_assignment PIN_G12 -to UART_RXD
-set_location_assignment PIN_M23 -to RESETN
-set_instance_assignment -name IO_STANDARD "1.8 V" -to RESETN
+set_global_assignment -name QIP_FILE pll.qip
+set_global_assignment -name QIP_FILE pll4M.qip
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
