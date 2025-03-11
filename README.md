@@ -1,13 +1,11 @@
-# RISC-V Framework
-
+# RISC-V Demo
 ## Instructions
 
 Clone using:
 
 ```shell
 git clone https://github.com/binhkieudo/NewFramework.git
-cd NewFramework
-git checkout dev
+cd RISC-V Demo
 ```
 
 ## Install conda enviroment
