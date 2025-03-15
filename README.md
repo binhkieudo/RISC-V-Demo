@@ -95,13 +95,36 @@ https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=6
 
 ![board_demo](https://github.com/user-attachments/assets/1770d16e-d5ef-4e8b-942e-1a116970c60e)
 
+In the demo with FPGA, DE2-115 peripherals are used. The GPIOs on JP5 (JTAG + SDCard) are used to connect with JTAG and SDCard as the following pin map.
 
-Demo with FPGA
+![gpio](https://github.com/user-attachments/assets/7f631cef-3b96-4544-bbd2-091500e3d777)
+
+### Demo with FPGA
+
+The RTL source and bitstream for Demo on FPGA are located at.
+
 ```shell
 ./Demo/DE2-115
 ```
+The software is located at 
 
-Demo with Chip
+```shell
+./Demo/software
+```
+
+After `make` the software, the generated binary file needs to be stored in SDCard as the Tutorial file.
+
+./Demo/DE
+### Demo with Chip
+
+In the demo with the chip, FPGA is used as an external memory and clock provider. The peripherals are integrated into the Demo board.
+
 ```shell
 ./Demo/Chip
 ```
+
+```shell
+./Demo/software
+```
+
+After `make` the software, the generated binary file needs to be stored in SDCard as the Tutorial file.
