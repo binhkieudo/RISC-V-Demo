@@ -83,6 +83,17 @@ Please read Tutorial/Tutorial.pdf
 
 Quartus must be in your PATH
 
+### Setup FPGA board
+
+The DE2-115 is used to set up the Demo for both FPGA and Chip.
+https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=139&No=502&PartNo=1#contents
+
+GPIO-HSTC card is required for the Demo with the chip.
+https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=67&No=322#contents
+
+![board_demo](https://github.com/user-attachments/assets/1770d16e-d5ef-4e8b-942e-1a116970c60e)
+
+
 Demo with FPGA
 ```shell
 ./Demo/DE2-115
