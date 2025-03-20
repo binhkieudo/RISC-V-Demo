@@ -85,6 +85,10 @@ class FourRocketConfig extends Config(
   new WithBareCores(4) ++         // Quad rocket-core
   new chipyard.config.AbstractConfig)
 
+class QuadRocketConfig extends Config(
+  new freechips.rocketchip.subsystem.WithNBigCores(4) ++    // quad-core (4 RocketTiles)
+  new chipyard.config.AbstractConfig)
+    
 class UARTTSIRocketConfig extends Config(
   new chipyard.harness.WithUARTSerial ++
   new chipyard.config.WithNoUART ++

@@ -54,14 +54,14 @@ SECTIONS
   PROVIDE(_data_lma = LOADADDR(.rodata));
   PROVIDE(_edata = .);
 
-  .bss ALIGN((ADDR(.sdata) + SIZEOF(.sdata)), 8) : AT(ALIGN((LOADADDR(.sdata) + SIZEOF(.sdata)), 8)) {
+  .bss ALIGN((ORIGIN(data_mem) + 0x0), 8) : AT(ALIGN((ORIGIN(data_mem) + 0x0), 8)) {
     PROVIDE(_fbss = .);
     PROVIDE(__global_pointer$ = . + 0x7C0);
     *(.sbss .sbss.* .gnu.linkonce.sb.*)
     *(.bss .bss.* .gnu.linkonce.b.*)
     . = ALIGN(8);
     PROVIDE(_ebss = .);
-  } >memory_mem  :bss
+  } >data_mem  :bss
 
   PROVIDE(_end = .);
   PROVIDE(_sp = .);

@@ -7,13 +7,11 @@
 #include "kprintf.h"
 #include "thread.h"
 
-
 #define DELAY_TIME 30000
-#define SIZE 64
-#define TEST 1
-#define CORE 8
+#define SIZE 4
+#define CORE 4
 
-typedef uint8_t mat_t;
+typedef uint16_t mat_t;
 
 static volatile mat_t *dump  = (mat_t*)(THREAD_QUEUE_ADDR);
 
@@ -89,33 +87,6 @@ void strassen_mul(void *din0, void *din1, void *dout) {
   
 }
 
-void strassen_add(void *din0, void *din1, void *dout) {
-  mat_t matA[SIZE/2][SIZE/2];
-  mat_t matB[SIZE/2][SIZE/2];
-  mat_t matC[SIZE/2][SIZE/2];
-
-  mat_t *dinA = (mat_t*)din0;
-  mat_t *dinB = (mat_t*)din1;
-  mat_t *matOut = (mat_t*)dout;
-
-  // Fetch
-  for (int i = 0; i < SIZE/2; i++)
-    for (int j = 0;  j < SIZE/2; j++){
-      matA[i][j] = dinA[i*(SIZE/2)+j];
-      matB[i][j] = dinB[i*(SIZE/2)+j];
-    }
-
-  for (int i = 0; i < SIZE/2; i++)
-    for (int j = 0;  j < SIZE/2; j++)
-      matC[i][j] = matA[i][j] + matB[i][j];
-
-  // Writeback
-  for (int i = 0; i < SIZE/2; i++)
-    for (int j = 0;  j < SIZE/2; j++)
-      matOut[i*(SIZE/2) + j] = matC[i][j];
-
-}
-
 int main(int hartid, char **argv) {
 
   REG32(uart, UART_REG_TXCTRL) = UART_TXEN;
@@ -131,12 +102,10 @@ int main(int hartid, char **argv) {
   for (int i = 0; i < SIZE; i++)
     for (int j = 0;  j < SIZE; j++){
       matA[i][j] = i*SIZE + j;
-      matB[i][j] = i*SIZE + j;
+      matB[i][j] = i*SIZE + j + 1;
       matC[i][j] = 0;
     }
 
-
-  t_start = read_csr(mcycle);
   // Multiplication
   for (int i = 0; i < SIZE; i++)
     for (int j = 0;  j < SIZE; j++){
@@ -146,10 +115,6 @@ int main(int hartid, char **argv) {
       }
       matC[i][j] = sum;
     }
-  t_end = read_csr(mcycle);
-
-  ts_gap = t_end - t_start;
-  kprintf("Single core: %l(cycles) \r\n", ts_gap);
 
   // ======================================================
   // Run matrix multiplication on eight core
@@ -186,10 +151,12 @@ int main(int hartid, char **argv) {
       k++;
     }
 
-  // Init number of thread
-  thread_init(CORE);
+    
 
-  // Multiplicaton
+  // Init number of thread
+  thread_init(8);
+  
+  // // Multiplicaton
   thread_create(strassen_mul, &in0[0], &in1[0], out[0]);
   thread_create(strassen_mul, &in0[1], &in1[2], out[1]);
   thread_create(strassen_mul, &in0[0], &in1[1], out[2]);
@@ -200,42 +167,35 @@ int main(int hartid, char **argv) {
   thread_create(strassen_mul, &in0[3], &in1[3], out[7]);
   thread_join();
 
-  
   // Addition
-  thread_create(strassen_add, &out[0], &out[1], out[0]);
-  thread_create(strassen_add, &out[2], &out[3], out[2]);
-  thread_create(strassen_add, &out[4], &out[5], out[4]);
-  thread_create(strassen_add, &out[6], &out[7], out[6]);
-  thread_join();
-
-  // Write back result
-  k = 0;
-  for (int i = 0; i < SIZE/2; i++)
-    for (int j = 0; j < SIZE/2; j++)
-      matC[i][j] = out[0][k];
-  k = 0;
-  for (int i = 0; i < SIZE/2; i++)
-    for (int j = 0; j < SIZE/2; j++)
-      matC[i][j+SIZE/2] = out[2][k];
-  k = 0;
-  for (int i = 0; i < SIZE/2; i++)
-    for (int j = 0; j < SIZE/2; j++)
-      matC[i+SIZE/2][j] = out[4][k];      
-  k = 0;
-  for (int i = 0; i < SIZE/2; i++)
-    for (int j = 0; j < SIZE/2; j++)
-      matC[i+SIZE/2][j+SIZE/2] = out[6][k];
-      
-  t_end = read_csr(mcycle);
-  tm_gap = t_end - t_start;
-
   for (int i = 0; i < SIZE; i++) {
-    for (int j = 0; j < SIZE; j++)
-      REG32(dump, 0) =  matC[i][j];
+    out[0][i] += out[1][i];
+    out[2][i] += out[3][i];
+    out[4][i] += out[5][i];
+    out[6][i] += out[7][i];
   }
-
-kprintf("Multi core: %l(cycles) \r\n", tm_gap);
-  kprintf("Complete\r\n\r\n");
+  
+  
+  // Matched to original matrices
+  matC[0][0] = out[0][0];
+  matC[0][1] = out[0][1];
+  matC[0][2] = out[2][0];
+  matC[0][3] = out[2][1];
+  matC[1][0] = out[0][2];
+  matC[1][1] = out[0][3];
+  matC[1][2] = out[2][2];
+  matC[1][3] = out[2][3];
+  matC[2][0] = out[4][0];
+  matC[2][1] = out[4][1];
+  matC[2][2] = out[6][0];
+  matC[2][3] = out[6][1];
+  matC[3][0] = out[4][2];
+  matC[3][1] = out[4][3];
+  matC[3][2] = out[6][2];
+  matC[3][3] = out[6][3];  
 	
+  // Stop here to check your result
+  while (1);
+
 	return 0;
 }
