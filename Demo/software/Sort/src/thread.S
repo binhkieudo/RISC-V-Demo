@@ -110,19 +110,3 @@ read_flag3:
   li t0, (CLINT_CTRL_ADDR + CLINT_MSIP3)
   amoor.w a0, zero, (t0)
   ret
-read_flag4:
-  li t0, (CLINT_CTRL_ADDR + CLINT_MSIP4)
-  amoor.w a0, zero, (t0)
-  ret
-read_flag5:
-  li t0, (CLINT_CTRL_ADDR + CLINT_MSIP5)
-  amoor.w a0, zero, (t0)
-  ret
-read_flag6:
-  li t0, (CLINT_CTRL_ADDR + CLINT_MSIP6)
-  amoor.w a0, zero, (t0)
-  ret
-read_flag7:
-  li t0, (CLINT_CTRL_ADDR + CLINT_MSIP7)
-  amoor.w a0, zero, (t0)
-  ret

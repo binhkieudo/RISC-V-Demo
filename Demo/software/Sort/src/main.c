@@ -7,54 +7,76 @@
 #include "kprintf.h"
 #include "thread.h"
 
-int arr0[] = {1, 9, 4, 7, 3};
-int arr1[] = {2, 2, 4, 3, 1};
-int arr2[] = {6, 3, 4, 6, 0};
-int arr3[] = {7, 9, 4, 5, 2};
+#define DELAY_TIME 30000
+#define SIZE 4
 
+typedef uint16_t mat_t;
 
-void Sort_kernel(int arr[], int n) {
-    int i, j, temp;
-    for (i = 0; i < n - 1; i++) {
-        for (j = 0; j < n - i - 1; j++) {
-            if (arr[j] > arr[j + 1]) {
-                temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-            }
-        }
-    }
+static volatile mat_t *dump  = (mat_t*)(THREAD_QUEUE_ADDR);
+
+unsigned int data_buf0[] = {8, 7, 6, 5, 4, 3, 2, 1};
+unsigned int data_buf1[] = {18, 17, 16, 15, 14, 13, 12, 11};
+unsigned int data_buf2[] = {28, 27, 26, 25, 24, 23, 22, 21};
+unsigned int data_buf3[] = {38, 37, 36, 35, 34, 33, 32, 31};
+
+unsigned int result0[8];
+unsigned int result1[8];
+unsigned int result2[8];
+unsigned int result3[8];
+
+void Sort(unsigned int* data, unsigned int* len, unsigned int *result) {
+
+  int n = *len / 4;
+
+  // Copy data
+  for (int i = 0; i < n; ++i) {
+    result[i] = data[i];
+  }
+
+  // Sort
+  int swapped;
+  for (int i = 0; i < n - 1; ++i) {
+      swapped = 0;
+      // Last i elements are already in place
+      for (int j = 0; j < n - i - 1; j++) {
+          if (result[j] > result[j + 1]) {
+              // Swap
+              unsigned int temp = result[j];
+              result[j] = result[j + 1];
+              result[j + 1] = temp;
+              swapped = 1;
+          }
+      }
+
+      if (swapped == 0) {
+          break;
+      }
+  }
 }
 
 int main(int hartid, char **argv) {
 
   REG32(uart, UART_REG_TXCTRL) = UART_TXEN;
 
+  uint32_t len0 = sizeof(data_buf0);
+  uint32_t len1 = sizeof(data_buf1);
+  uint32_t len2 = sizeof(data_buf2);
+  uint32_t len3 = sizeof(data_buf3);
+
+
   // Init number of thread
   thread_init(4);
-
-  // Multiplicaton
-  thread_create(Sort_kernel, &arr0, sizeof(arr0)/4, arr0);
-  thread_create(Sort_kernel, &arr1, sizeof(arr1)/4, arr0);
-  thread_create(Sort_kernel, &arr2, sizeof(arr2)/4, arr0);
-  thread_create(Sort_kernel, &arr3, sizeof(arr3)/4, arr0);
-  thread_join();
-
-  kprintf("\r\n");
-  for (int i = 0; i < 5; i++)
-    kprintf("%l  ", arr0[i]);
   
-  kprintf("\r\n");
-  for (int i = 0; i < 5; i++)
-    kprintf("%l  ", arr1[i]);
-    
-  kprintf("\r\n");
-  for (int i = 0; i < 5; i++)
-    kprintf("%l  ", arr2[i]);
-    
-  kprintf("\r\n");
-  for (int i = 0; i < 5; i++)
-    kprintf("%l  ", arr3[i]);
-    	
-  return 0;
+  // Calculate
+  thread_create(Sort, data_buf0, &len0, result0);
+  thread_create(Sort, data_buf1, &len1, result1);
+  thread_create(Sort, data_buf2, &len2, result2);
+  thread_create(Sort, data_buf3, &len3, result3);
+  thread_join();
+ 
+
+  // Stop here to check your result
+  while (1);
+
+	return 0;
 }

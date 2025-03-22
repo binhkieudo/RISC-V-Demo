@@ -8,5 +8,8 @@
         "string_view": "c",
         "thread.h": "c",
         "const.h": "c"
+    },
+    "files.watcherExclude": {
+        "**/target": true
     }
 }

@@ -35,32 +35,9 @@ __clear_flag2:
   amoswap.w t0, zero, (s0)
   j __core_sleep
 __clear_flag3:
-  li t0, 3
-  bne s0, t0, __clear_flag4
-  li s0, (CLINT_CTRL_ADDR + CLINT_MSIP3)
-  amoswap.w t0, zero, (s0)
-  j __core_sleep
-__clear_flag4:
-  li t0, 4
-  bne s0, t0, __clear_flag5
-  li s0, (CLINT_CTRL_ADDR + CLINT_MSIP4)
-  amoswap.w t0, zero, (s0)
-  j __core_sleep
-__clear_flag5:
-  li t0, 5
-  bne s0, t0, __clear_flag6
-  li s0, (CLINT_CTRL_ADDR + CLINT_MSIP5)
-  amoswap.w t0, zero, (s0)
-  j __core_sleep
-__clear_flag6:
-  li t0, 6
-  bne s0, t0, __clear_flag7
-  li s0, (CLINT_CTRL_ADDR + CLINT_MSIP6)
-  amoswap.w t0, zero, (s0)
-  j __core_sleep
-__clear_flag7:
-  li s0, (CLINT_CTRL_ADDR + CLINT_MSIP7)
-  amoswap.w t0, zero, (s0)
+  csrr t0, mhartid
+  li t1, 3
+  beq t0, t1, __clear_flag3
 __core_sleep:
   li s2, 0x8 // Enable interrupt
   csrw mie, s2
@@ -164,7 +141,7 @@ _thread_entry: // For other cores
 _main: // Hart 0
   csrw mie, zero
   csrr a0, mhartid
-  li sp, (MEMORY_MEM_ADDR + 0x7fff0)
+  li sp, (MEMORY_MEM_ADDR + 0x3ff0)
   call main
 _loopback:
   wfi

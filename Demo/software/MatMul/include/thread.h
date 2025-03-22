@@ -37,7 +37,6 @@ void thread_init(uint32_t thread_count) {
     thread_widx = 0;
     thread_ridx = 0;
     mux_unlock();
-    // Active cores from sleep
 }
 
 void thread_create(void* funct, void *din0, void *din1, void *dout) {
@@ -81,13 +80,6 @@ void thread_join() {
     while (1) {
         core_status = 0;
         core_status += read_flag0();
-        // core_status += read_flag1();
-        // core_status += read_flag2();
-        // core_status += read_flag3();
-        // core_status += read_flag4();
-        // core_status += read_flag5();
-        // core_status += read_flag6();
-        // core_status += read_flag7();
         if (core_status == 0) break;
     }
 }

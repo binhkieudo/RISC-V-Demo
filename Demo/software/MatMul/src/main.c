@@ -9,7 +9,6 @@
 
 #define DELAY_TIME 30000
 #define SIZE 4
-#define CORE 4
 
 typedef uint16_t mat_t;
 
