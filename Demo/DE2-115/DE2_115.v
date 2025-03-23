@@ -110,16 +110,16 @@ module DE2_115(
 //=======================================================
 //  Serial RAM
 //=======================================================
-	SerialRAM ext_ram(
-	  .clock					(sysclk 		  ), // input clock
-	  .reset					(!RESETN 	  ), // input reset
-	  .io_ser_in_ready	(serin_ready  ), // input Processor ready
-	  .io_ser_out_valid	(serout_valid ), // input data from processor valid
-	  .io_ser_out_bits	(serout_data  ), // input 8-bit data from processor
-	  .io_ser_in_valid	(serin_valid  ), // output data to processor valid
-	  .io_ser_in_bits		(serin_data   ), // output 8-bit data to processor
-	  .io_ser_out_ready	(serout_ready )  // output SerialRam ready
-	);
+//	SerialRAM ext_ram(
+//	  .clock					(sysclk 		  ), // input clock
+//	  .reset					(!RESETN 	  ), // input reset
+//	  .io_ser_in_ready	(serin_ready  ), // input Processor ready
+//	  .io_ser_out_valid	(serout_valid ), // input data from processor valid
+//	  .io_ser_out_bits	(serout_data  ), // input 8-bit data from processor
+//	  .io_ser_in_valid	(serin_valid  ), // output data to processor valid
+//	  .io_ser_in_bits		(serin_data   ), // output 8-bit data to processor
+//	  .io_ser_out_ready	(serout_ready )  // output SerialRam ready
+//	);
 
 
 endmodule
